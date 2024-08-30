@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const User = require("../models/user");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 
 
@@ -71,4 +71,36 @@ router.post("/sign-up", async (req, res) => {
 });
 
 
+
+//Sign In 
+router.post("/sign-in", async (req, res) => {
+
+    try {
+
+        const { username, password } = req.body;
+
+        //checking if username exist or not
+        const existingUser = await User.findOne({ username });
+        if (!existingUser) {
+            res.status(400).json({ message: "Invalid Credentials!" });
+        }
+
+
+        //if username exist then checking if pass and username is correct or not
+        await bcrypt.compare(password, existingUser.password, (err, data) => {
+
+            if (data) {
+                res.status(200).json({ message: "SignIn success" });
+            } else {
+                res.status(400).json({ message: "Invalid Credentials!" });
+            }
+        });
+
+    } catch (error) {
+
+        res.status(500).json({ message: "Internal server error" });
+    }
+});
+
 module.exports = router;
+  
