@@ -15,7 +15,7 @@ router.put("/add-book-to-favourite", authenticateToken, async (req, res) => {
         await User.findByIdAndUpdate(id, { $push: { favourites: bookid } });
         return res.status(200).json({ message: "Book added to favourites" });
     } catch (error) {
-        res.status(500).json({ message: "Internal server error" });
+        return res.status(500).json({ message: "Internal server error" });
     }
 });
 
@@ -31,7 +31,7 @@ router.put("/remove-book-from-favourite", authenticateToken, async (req, res) =>
         }
         return res.status(200).json({ message: "Book removed from favourites" });
     } catch (error) {
-        res.status(500).json({ message: "Internal server error" });
+        return res.status(500).json({ message: "Internal server error" });
     }
 });
 
@@ -47,7 +47,7 @@ router.get("/get-favourite-books", authenticateToken, async (req, res) => {
          });
     } catch (error) {
         console.log(error);
-        res.status(500).json({ message: "An error occured" });
+        return res.status(500).json({ message: "An error occured" });
     }
 });
 module.exports = router;
