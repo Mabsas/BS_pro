@@ -29,4 +29,23 @@ router.put("/add-to-cart", authenticateToken, async (req, res) => {
     }
 });
 
+//remove from cart
+router.put("/remove-from-cart/:bookid", authenticateToken, async (req, res) => {
+    try {
+        const { bookid } = req.params;
+        const { id } = req.headers;
+        await User.findByIdAndUpdate(id,{
+            $pull: {cart: bookid},
+        });
+
+        return res.json({ status: "Success",
+            message: "Book removed from cart",
+         });
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: "An error occured" });
+    }
+});
+
 module.exports = router;

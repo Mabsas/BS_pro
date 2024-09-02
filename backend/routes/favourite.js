@@ -20,7 +20,8 @@ router.put("/add-book-to-favourite", authenticateToken, async (req, res) => {
 });
 
 //remove book from favourite
-router.delete("/remove-book-from-favourite", authenticateToken, async (req, res) => {
+// using put instead of delete cz put is  used to remove from that particular user info and delete is used to remove from database
+router.put("/remove-book-from-favourite", authenticateToken, async (req, res) => {
     try {
         const { bookid, id } = req.headers;
         const userData = await User.findById(id);
