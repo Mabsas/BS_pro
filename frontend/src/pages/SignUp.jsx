@@ -25,9 +25,9 @@ const SignUp = () => {
         navigate("/LogIn");
       }
     } catch (error) {
-      console.log(error);
+      alert(error.response.data.message);
     }
-  }
+  };
   return (
     <div className="min-h-screen bg-zinc-900 flex items-center justify-center px-4">
       <div className="bg-zinc-800 rounded-lg px-8 py-5 w-full md:w-3/6 lg:w-2/6 shadow-lg">

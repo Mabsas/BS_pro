@@ -1,7 +1,32 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
+  const [Values, setValues] = useState({
+    username: "",
+    password: "",
+  });
+  const navigate = useNavigate();
+  const change = (e) => {
+    const { name, value } = e.target;
+    setValues({ ...Values, [name]: value });
+  };
+  const submit = async () => {
+    try {
+      if (Values.username === "" ||  Values.password === "") {
+        alert("Fill up all the fields!");
+      } else {
+        const response = await axios.post("http://localhost:1000/api/v1/sign-in", Values);
+        localStorage.setItem("id", response.data.id);
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("role", response.data.role);
+        //navigate("/LogIn");
+      }
+    } catch (error) {
+      alert(error.response.data.message);
+    }
+  };
   return (
     <div className="min-h-screen bg-zinc-900 flex items-center justify-center px-4">
       <div className="bg-zinc-800 rounded-lg px-8 py-5 w-full md:w-3/6 lg:w-2/6 shadow-lg">
@@ -16,6 +41,8 @@ const Login = () => {
               placeholder="Username"
               name="username"
               required
+              value={Values.username}
+              onChange={change}
             />
           </div>
           <div>
@@ -27,10 +54,12 @@ const Login = () => {
               placeholder="Password"
               name="password"
               required
+              value={Values.password}
+              onChange={change}
             />
           </div>
           <div>
-            <button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold py-2 rounded hover:opacity-90 transition duration-300">
+            <button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold py-2 rounded hover:opacity-90 transition duration-300" onClick={submit}>
               Login
             </button>
             <p className="flex mt-4 items-center justify-center text-zinc-200 font-semibold">
