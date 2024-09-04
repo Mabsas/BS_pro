@@ -18,7 +18,7 @@ const RecentlyAdded = () => {
             {!Data && (<div className="flex items justify-center my-8">
                 <Loader /> {" "}
             </div>)}
-            <div className="my-8 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            <div className="my-8 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-8">
                 {Data &&
                     Data.map((items, i) => (
                         <div key={i}>
