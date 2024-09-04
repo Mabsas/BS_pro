@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { authActions } from '../store/auth';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
 const Login = () => {
@@ -8,6 +10,7 @@ const Login = () => {
     password: "",
   });
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const change = (e) => {
     const { name, value } = e.target;
     setValues({ ...Values, [name]: value });
@@ -18,9 +21,13 @@ const Login = () => {
         alert("Fill up all the fields!");
       } else {
         const response = await axios.post("http://localhost:1000/api/v1/sign-in", Values);
+
+        dispatch(authActions.login());
+        dispatch(authActions.changeRole(response.data.role));
         localStorage.setItem("id", response.data.id);
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("role", response.data.role);
+        navigate("/profile");
         //navigate("/LogIn");
       }
     } catch (error) {

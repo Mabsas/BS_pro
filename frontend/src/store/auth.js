@@ -12,8 +12,8 @@ const authSlice = createSlice({
             state.isLoggedIn = false;
         },
         changeRole(state, action) {
-            const role =  action.payload;
-            state.role = role;
+            const role =  action.payload; //role we are giving on frontend
+            state.role = role;      //will update role in backkend
         },
     },
 });
