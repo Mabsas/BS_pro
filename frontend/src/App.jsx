@@ -14,7 +14,7 @@ import { authActions } from './store/auth';
 
 
 const App = () => {
-  // after refreshing the user stays login 
+  // after refreshing the user stays logged in 
   const dispatch = useDispatch();
   const role = useSelector((state) => state.auth.role);
   useEffect(() => {
