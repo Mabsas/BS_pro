@@ -21,7 +21,7 @@ const RecentlyAdded = () => {
             <div className="my-8 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-8">
                 {Data &&
                     Data.map((items, i) => (
-                        <div key={i}>
+                        <div key={i} className="transform hover:scale-105 transition-transform duration-300">
                             <BookCard data={items} />{" "}
                         </div>
                     ))}

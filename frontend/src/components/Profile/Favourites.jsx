@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import BookCard from '../BookCard/BookCard';
 
 const Favourites = () => {
-
-
   const [FavouriteBooks, setFavouriteBooks] = useState();
   const headers = {
     id: localStorage.getItem("id"),
@@ -13,16 +11,10 @@ const Favourites = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      const response = await axios.get("http://localhost:1000/api/v1/get-favourite-books",
-        { headers }
-      );
+      const response = await axios.get("http://localhost:1000/api/v1/get-favourite-books", { headers });
       setFavouriteBooks(response.data.data);
     };
     fetch();
-
-    return () => {
-
-    }
   }, [FavouriteBooks]);
 
   return (
@@ -34,11 +26,13 @@ const Favourites = () => {
           </div>
           <img src="./star.png" alt="star" className="h-[15vh]" />
         </div>
-
       ) : (
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-8 py-4">
           {FavouriteBooks && FavouriteBooks.map((items, i) => (
-            <div key={i}>
+            <div 
+              key={i} 
+              className="transform hover:scale-105 transition-transform duration-300"
+            >
               <BookCard data={items} favourite={true} />
             </div>
           ))}
@@ -48,4 +42,4 @@ const Favourites = () => {
   );
 };
 
-export default Favourites
+export default Favourites;
