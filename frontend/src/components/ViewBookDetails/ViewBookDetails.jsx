@@ -3,9 +3,11 @@ import axios from 'axios';
 import Loader from '../Loader/Loader';
 import { useParams } from 'react-router-dom';
 import { GrLanguage } from "react-icons/gr";
-import { FaHeart } from "react-icons/fa";
+import { ImHeart } from "react-icons/im";
 import { FaShoppingCart } from "react-icons/fa";
 import { useSelector } from 'react-redux';
+import { MdDelete } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
 const ViewBookDetails = () => {
     const { id } = useParams();
     const [Data, setData] = useState();
@@ -19,6 +21,26 @@ const ViewBookDetails = () => {
         };
         fetch();
     }, []);
+
+    const headers = {
+        id: localStorage.getItem("id"),
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+        bookid: id,
+      };
+    const handleFavourite = async () => {
+        const response = await axios.put("http://localhost:1000/api/v1/add-book-to-favourite",
+            {},
+            {headers}
+        );
+        alert(response.data.message);
+    }; 
+    const handleCart = async () => {
+        const response = await axios.put("http://localhost:1000/api/v1/add-to-cart",
+            {},
+            {headers}
+        );
+        alert(response.data.message);
+    }; 
     return (
         <>
             {Data && (
@@ -28,15 +50,27 @@ const ViewBookDetails = () => {
                         <div className="flex flex-col lg:flex-row justify-around  bg-zinc-800  rounded p-12 ">
                             <img src={Data.url} alt="/" className="h-[50vh] lg:h-[70vh] md:h-[60vh] rounded" />
                             {isLoggedIn === true && role === "user" && (
-                                <div className="flex flex-row items-center justify-between lg:justify-start lg:flex-col mt-4 lg:mt-0">
-                                    <button className="bg-white rounded lg:rounded-full text-2xl p-3 mt-8 text-red-600 flex items-center justify-cente">
-                                        <FaHeart /> <span className="ms-4 block lg:hidden">Favourites</span>
+                                <div className="flex flex-col md:flex-row lg:flex-col items-center justify-between lg:justify-start gap-4 mt-4 lg:mt-0">
+                                    <button className="bg-red-500 hover:bg-red-700 transition duration-300 ease-in-out transform hover:scale-105 rounded lg:rounded-full text-2xl p-3 text-white flex items-center justify-center shadow-lg" onClick={handleFavourite}>
+                                    <ImHeart /> <span className="ms-4 block lg:hidden">Favourites</span>
                                     </button>
-                                    <button className="bg-blue-500 rounded lg:rounded-full text-2xl p-3 mt-8 text-white flex items-center justify-center">
+                                    <button className="bg-blue-500 hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 rounded lg:rounded-full text-2xl p-3 text-white flex items-center justify-center shadow-lg"  onClick={handleCart}>
                                         <FaShoppingCart /> <span className="ms-4 block lg:hidden">Add to cart</span>
                                     </button>
                                 </div>
                             )}
+
+                            {isLoggedIn === true && role === "admin" && (
+                                <div className="flex flex-col md:flex-row lg:flex-col items-center justify-between lg:justify-start gap-4 mt-4 lg:mt-0">
+                                    <button className="bg-yellow-500 hover:bg-yellow-600 transition duration-300 ease-in-out transform hover:scale-105 rounded lg:rounded-full text-2xl p-3 flex items-center justify-center text-white shadow-lg">
+                                        <FaEdit /> <span className="ms-4 block lg:hidden">Edit</span>
+                                    </button>
+                                    <button className="bg-red-500 hover:bg-red-600 transition duration-300 ease-in-out transform hover:scale-105 rounded lg:rounded-full text-2xl p-3 text-white flex items-center justify-center shadow-lg">
+                                        <MdDelete /> <span className="ms-4 block lg:hidden">Delete</span>
+                                    </button>
+                                </div>
+                            )}
+
                         </div>
                     </div>
                     <div className="p-4 w-full lg:w-3/6">
