@@ -49,10 +49,10 @@ const UserOrderHistory = () => {
           </h1>
 
           {/* Table Header */}
-          <div className="bg-zinc-800 rounded py-3 px-4 flex flex-col md:flex-row items-center justify-between text-sm md:text-base font-semibold text-zinc-400">
+          <div className="bg-zinc-800 rounded py-0 lg:py-3 px-4 flex items-center justify-between text-sm md:text-base font-semibold text-zinc-400">
             <div className="w-[5%] text-center">#</div>
-            <div className="w-[22%]">Books</div>
-            <div className="w-[35%]">Description</div>
+            <div className="w-[22%] text-left">Books</div>
+            <div className="w-[35%] text-left">Description</div>
             <div className="w-[8%] text-center">Price</div>
             <div className="w-[15%] text-center">Status</div>
             <div className="w-[5%] text-center hidden md:block">Payment Mode</div>
@@ -62,10 +62,10 @@ const UserOrderHistory = () => {
           {OrderHistory.map((item, i) => (
             <div
               key={i}
-              className="bg-zinc-700 rounded py-3 px-4 mt-3 flex flex-col md:flex-row items-center justify-between hover:bg-zinc-600 transition-all duration-200"
+              className="bg-zinc-700 rounded py-0 lg:py-3 px-4 mt-3 flex items-center justify-between hover:bg-zinc-600 transition-all duration-200"
             >
               <div className="w-[5%] text-center">{i + 1}</div>
-              <div className="w-[22%]">
+              <div className="w-[22%] text-left">
                 <Link
                   to={`/view-book-details/${item.book._id}`}
                   className="text-blue-300 hover:underline"
@@ -73,7 +73,7 @@ const UserOrderHistory = () => {
                   {item.book.title}
                 </Link>
               </div>
-              <div className="w-[35%] text-zinc-400">
+              <div className="w-[35%] text-left text-zinc-400">
                 {item.book.desc.slice(0, 50)}...
               </div>
               <div className="w-[8%] text-center text-zinc-400">
