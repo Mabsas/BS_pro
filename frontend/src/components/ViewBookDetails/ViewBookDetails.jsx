@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import Loader from '../Loader/Loader';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { GrLanguage } from "react-icons/gr";
 import { ImHeart } from "react-icons/im";
 import { FaShoppingCart } from "react-icons/fa";
@@ -10,6 +10,7 @@ import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 const ViewBookDetails = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [Data, setData] = useState();
     const role = useSelector((state) => state.auth.role);
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -40,7 +41,13 @@ const ViewBookDetails = () => {
             {headers}
         );
         alert(response.data.message);
+      
     }; 
+    const deleteBook = async () => {
+        const response = await axios.delete("http://localhost:1000/api/v1/delete-book",{headers});
+        alert(response.data.message);
+        navigate("/all-books");
+    };
     return (
         <>
             {Data && (
@@ -65,7 +72,8 @@ const ViewBookDetails = () => {
                                     <button className="bg-yellow-500 hover:bg-yellow-600 transition duration-300 ease-in-out transform hover:scale-105 rounded lg:rounded-full text-2xl p-3 flex items-center justify-center text-white shadow-lg">
                                         <FaEdit /> <span className="ms-4 block lg:hidden">Edit</span>
                                     </button>
-                                    <button className="bg-red-500 hover:bg-red-600 transition duration-300 ease-in-out transform hover:scale-105 rounded lg:rounded-full text-2xl p-3 text-white flex items-center justify-center shadow-lg">
+                                    <button className="bg-red-500 hover:bg-red-600 transition duration-300 ease-in-out transform hover:scale-105 rounded lg:rounded-full text-2xl p-3 text-white flex items-center justify-center shadow-lg"
+                                    onClick={deleteBook}>
                                         <MdDelete /> <span className="ms-4 block lg:hidden">Delete</span>
                                     </button>
                                 </div>
