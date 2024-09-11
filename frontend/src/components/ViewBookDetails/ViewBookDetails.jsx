@@ -8,6 +8,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { useSelector } from 'react-redux';
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 const ViewBookDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -69,9 +70,10 @@ const ViewBookDetails = () => {
 
                             {isLoggedIn === true && role === "admin" && (
                                 <div className="flex flex-col md:flex-row lg:flex-col items-center justify-between lg:justify-start gap-4 mt-4 lg:mt-0">
-                                    <button className="bg-yellow-500 hover:bg-yellow-600 transition duration-300 ease-in-out transform hover:scale-105 rounded lg:rounded-full text-2xl p-3 flex items-center justify-center text-white shadow-lg">
+                                    <Link 
+                                    to={`/updateBook/${id}`} className="bg-yellow-500 hover:bg-yellow-600 transition duration-300 ease-in-out transform hover:scale-105 rounded lg:rounded-full text-2xl p-3 flex items-center justify-center text-white shadow-lg">
                                         <FaEdit /> <span className="ms-4 block lg:hidden">Edit</span>
-                                    </button>
+                                    </Link>
                                     <button className="bg-red-500 hover:bg-red-600 transition duration-300 ease-in-out transform hover:scale-105 rounded lg:rounded-full text-2xl p-3 text-white flex items-center justify-center shadow-lg"
                                     onClick={deleteBook}>
                                         <MdDelete /> <span className="ms-4 block lg:hidden">Delete</span>
