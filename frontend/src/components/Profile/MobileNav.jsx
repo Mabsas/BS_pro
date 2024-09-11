@@ -28,6 +28,22 @@ const MobileNav = () => {
                     </Link>
                 </div>
             )}
+            {role === "admin" && (
+                <div className="py-4 flex flex-row items-center">
+                    <Link
+                        to="/profile"
+                        className="text-gray-100 font-semibold w-full lg:hidden py-3 text-center hover:bg-gray-700 rounded transition-colors duration-300"
+                    >
+                        All Orders
+                    </Link>
+                    <Link
+                        to="/profile/add-book"
+                        className="text-gray-100 font-semibold w-full lg:hidden py-3 text-center hover:bg-gray-700 rounded transition-colors duration-300"
+                    >
+                        Add Book
+                    </Link>
+                </div>
+            )}
         </>
     );
 };
