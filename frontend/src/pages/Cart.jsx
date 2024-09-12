@@ -15,14 +15,14 @@ const Cart = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      const response = await axios.get("http://localhost:1000/api/v1/get-user-cart", { headers });
+      const response = await axios.get("https://bs-pro-api.vercel.app/api/v1/get-user-cart", { headers });
       setCart(response.data.data);
     };
     fetch();
   }, [Cart]);
 
   const deleteItem = async (bookid) => {
-    const response = await axios.put(`http://localhost:1000/api/v1/remove-from-cart/${bookid}`, {}, { headers });
+    const response = await axios.put(`https://bs-pro-api.vercel.app/api/v1/remove-from-cart/${bookid}`, {}, { headers });
     alert(response.data.message);
   };
 
@@ -38,7 +38,7 @@ const Cart = () => {
 
   const PlaceOrder = async () => {
     try {
-      const response = await axios.post(`http://localhost:1000/api/v1/place-order`, { order: Cart }, { headers });
+      const response = await axios.post(`https://bs-pro-api.vercel.app/api/v1/place-order`, { order: Cart }, { headers });
       alert(response.data.message);
       navigate("/profile/orderHistory");
     } catch (error) {

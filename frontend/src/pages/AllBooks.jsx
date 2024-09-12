@@ -12,7 +12,7 @@ const AllBooks = () => {
     const fetch = async () => {
       try {
         // Make the API call without authentication headers
-        const response = await axios.get('http://localhost:1000/api/v1/get-all-books');
+        const response = await axios.get('https://bs-pro-api.vercel.app/api/v1/get-all-books');
 
         setData(response.data.data);
       } catch (error) {

@@ -16,7 +16,7 @@ const Profile = () => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const response = await axios.get("http://localhost:1000/api/v1/get-user-information", { headers });
+        const response = await axios.get("https://bs-pro-api.vercel.app/api/v1/get-user-information", { headers });
         setProfile(response.data); // Update the state with the fetched profile data
       } catch (error) {
         console.error("Failed to fetch profile data:", error);

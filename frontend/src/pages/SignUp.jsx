@@ -20,7 +20,7 @@ const SignUp = () => {
       if (Values.username === "" || Values.email === "" || Values.password === "" || Values.address === "") {
         alert("Fill up all the fields!");
       } else {
-        const response = await axios.post("http://localhost:1000/api/v1/sign-up", Values);
+        const response = await axios.post("https://bs-pro-api.vercel.app/api/v1/sign-up", Values);
         alert(response.data.message);
         navigate("/LogIn");
       }

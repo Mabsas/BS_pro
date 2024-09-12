@@ -18,7 +18,7 @@ const ViewBookDetails = () => {
 
     useEffect(() => {
         const fetch = async () => {
-            const response = await axios.get(`http://localhost:1000/api/v1/get-book-by-id/${id}`);
+            const response = await axios.get(`https://bs-pro-api.vercel.app/api/v1/get-book-by-id/${id}`);
             setData(response.data.data);
         };
         fetch();
@@ -30,14 +30,14 @@ const ViewBookDetails = () => {
         bookid: id,
       };
     const handleFavourite = async () => {
-        const response = await axios.put("http://localhost:1000/api/v1/add-book-to-favourite",
+        const response = await axios.put("https://bs-pro-api.vercel.app/api/v1/add-book-to-favourite",
             {},
             {headers}
         );
         alert(response.data.message);
     }; 
     const handleCart = async () => {
-        const response = await axios.put("http://localhost:1000/api/v1/add-to-cart",
+        const response = await axios.put("https://bs-pro-api.vercel.app/api/v1/add-to-cart",
             {},
             {headers}
         );
@@ -45,7 +45,7 @@ const ViewBookDetails = () => {
       
     }; 
     const deleteBook = async () => {
-        const response = await axios.delete("http://localhost:1000/api/v1/delete-book",{headers});
+        const response = await axios.delete("https://bs-pro-api.vercel.app/api/v1/delete-book",{headers});
         alert(response.data.message);
         navigate("/all-books");
     };
