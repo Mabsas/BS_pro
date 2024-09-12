@@ -27,7 +27,7 @@ const AllBooks = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-zinc-700 to-zinc-800">
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-slate-900 via-gray-600 to-zinc-800">
         <Loader />
       </div>
     );
