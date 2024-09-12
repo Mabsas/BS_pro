@@ -10,7 +10,7 @@ const Sidebar = ({ data }) => {
     const history = useNavigate();
     const role = useSelector((state) => state.auth.role);
     return (
-        <div className="bg-zinc-800 p-4 rounded flex flex-col items-center justify-between h-auto lg:h-[100vh] w-full lg:w-[250px]">
+        <div className="bg-zinc-700 p-4 rounded flex flex-col items-center justify-between h-auto lg:h-[100vh] w-full lg:w-[250px]">
             {/* User Profile Section */}
             <div className="flex items-center flex-col justify-center mb-4 lg:mb-0">
                 <img src={data.avatar} className="h-[12vh] w-[12vh] rounded-full object-cover" alt="Profile Avatar" />
@@ -23,7 +23,7 @@ const Sidebar = ({ data }) => {
 
             {/* Links Section */}
             {role === "user" && (
-                <div className="w-full flex flex-col items-center justify-center gap-3 lg:gap-4 hidden lg:flex">
+                <div className="w-full flex flex-col items-center justify-center gap-3 lg:gap-4  lg:flex">
                     <Link
                         to="/profile" className="text-zinc-100 font-semibold w-full py-2 text-center hover:bg-zinc-900 rounded transition-all duration-300">
                         Favourites

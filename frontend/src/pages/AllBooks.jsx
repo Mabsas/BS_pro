@@ -49,7 +49,7 @@ const AllBooks = () => {
           Data.map((item, i) => (
             <div 
               key={i} 
-              className="transform hover:scale-105 transition-transform duration-300 bg-zinc-800 rounded-lg shadow-md p-4"
+              className="transform hover:scale-105 transition-transform duration-300 p-4"
             >
               <BookCard data={item} />
             </div>

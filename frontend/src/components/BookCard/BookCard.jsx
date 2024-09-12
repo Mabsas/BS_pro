@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -6,29 +6,37 @@ const BookCard = ({ data, favourite }) => {
   const headers = {
     id: localStorage.getItem("id"),
     authorization: `Bearer ${localStorage.getItem("token")}`,
-    bookid:data._id,
+    bookid: data._id,
   };
+
   const handleRemoveBook = async () => {
-    const response = await axios.put("http://localhost:1000/api/v1/remove-book-from-favourite",
-        {},
-        {headers}
+    const response = await axios.put(
+      "http://localhost:1000/api/v1/remove-book-from-favourite",
+      {},
+      { headers }
     );
     alert(response.data.message);
-}; 
+  };
+
   return (
-    <div className="bg-zinc-800 rounded p-4 flex flex-col">
+    <div className="bg-gradient-to-tl from-slate-600 to-zinc-600 rounded-lg p-4 flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300 w-full max-w-sm mx-auto">
       <Link to={`/view-book-details/${data._id}`}>
-        <div className="">
-          <div className="bg-zinc-900 rounded flex items-center justify-center">
-            <img src={data.url} alt="/" className="h-[30vh]" />
+        <div>
+          <div className="flex items-center justify-center h-[350px]">
+            <img
+              src={data.url}
+              alt={data.title}
+              className="h-full object-center rounded-lg w-full"
+            />
           </div>
-          <h2 className="mt-4 text-xl text-white font-semibold">{data.title}</h2>
-          <p className="mt-2 text-zinc-200 font-semibold">by {data.author}</p>
-          <p className="mt-2 text-zinc-200 font-semibold text-xl">Tk {data.price}</p>
+          <h2 className="mt-4 text-xl text-black font-semibold">{data.title}</h2>
+          <p className="mt-2 text-zinc-300 font-medium">by {data.author}</p>
+          <p className="mt-2 text-black font-semibold text-lg">Tk {data.price}</p>
         </div>
       </Link>
       {favourite && (
-        <button className="bg-gradient-to-r from-gray-600 via-gray-700 to-gray-800 hover:from-gray-700 hover:via-gray-800 hover:to-gray-900 transition duration-300 ease-in-out transform hover:scale-105 rounded-md text-xl p-4  flex items-center justify-center text-white shadow-lg shadow-gray-600/50"
+        <button
+          className="bg-zinc-500 hover:bg-zinc-400 transition-colors duration-300 rounded-md text-lg mt-4 p-3 text-white"
           onClick={handleRemoveBook}
         >
           Remove from Favourite
@@ -38,4 +46,4 @@ const BookCard = ({ data, favourite }) => {
   );
 };
 
-export default BookCard
+export default BookCard;

@@ -15,7 +15,7 @@ const Hero = () => {
                 <div className="mt-8">
                     <Link 
                     to="/all-books"
-                    className="text-yellow-100 text-xl lg:text-2xl font-semibold border border-yellow-100 px-10 py-2 hover:bg-zinc-800 rounded-full">
+                    className="text-yellow-100 text-lg lg:text-xl font-semibold border border-yellow-100 px-8 lg:px-12 py-3 hover:bg-yellow-100 hover:text-zinc-900 rounded-full transition duration-300 ease-in-out">
                         Discover Books
                     </Link>
                 </div>
