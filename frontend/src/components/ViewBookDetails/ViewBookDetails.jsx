@@ -52,10 +52,10 @@ const ViewBookDetails = () => {
     return (
         <>
             {Data && (
-                <div className="px-4 md:px-12 py-8 bg-zinc-900 flex flex-col lg:flex-row gap-8">
+                <div className="px-4 md:px-12 py-8 bg-gradient-to-b from-zinc-800 to-zinc-900 flex flex-col lg:flex-row gap-8">
                     <div className="w-full lg:w-3/6 ">
                         {" "}
-                        <div className="flex flex-col lg:flex-row justify-around  bg-zinc-800  rounded p-12 ">
+                        <div className="flex flex-col lg:flex-row justify-around  bg-gradient-to-tl from-zinc-800 to-zinc-900 rounded p-12 ">
                             <img src={Data.url} alt="/" className="h-[50vh] lg:h-[70vh] md:h-[60vh] rounded" />
                             {isLoggedIn === true && role === "user" && (
                                 <div className="flex flex-col md:flex-row lg:flex-col items-center justify-between lg:justify-start gap-4 mt-4 lg:mt-0">
