@@ -15,7 +15,7 @@ const Navbar = () => {
     const role = useSelector((state) => state.auth.role);
 
     if (isLoggedIn === false) {
-        links.splice(2, 2);  //cuts off cart and profile if not logged in
+        links.splice(3, 3);  //cuts off cart profile & admin profile if not logged in
     }
 
     if (isLoggedIn === true && role === "user") {

@@ -7,7 +7,7 @@ import Loader from '../components/Loader/Loader';
 import MobileNav from '../components/Profile/MobileNav';
 
 const Profile = () => {
-  // const isLoggedIn = useSelector();
+   //const isLoggedIn = useSelector();
   const [Profile, setProfile] = useState();
   const headers = {
     id: localStorage.getItem("id"),

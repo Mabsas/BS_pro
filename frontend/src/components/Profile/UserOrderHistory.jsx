@@ -35,7 +35,7 @@ const UserOrderHistory = () => {
             No Order History
           </h1>
           <img
-            src="out-of-stock.png"
+            src="/empty.png"
             alt="No Orders"
             className="h-[30vh] mb-8"
           />
