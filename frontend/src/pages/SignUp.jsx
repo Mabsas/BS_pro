@@ -29,7 +29,7 @@ const SignUp = () => {
     }
   };
   return (
-    <div className="min-h-screen bg-zinc-900 flex items-center justify-center px-4">
+    <div className="min-h-screenbg-gradient-to-br from-slate-900 via-gray-600 to-zinc-800 flex items-center justify-center px-4">
       <div className="bg-zinc-800 rounded-lg px-8 py-5 w-full md:w-3/6 lg:w-2/6 shadow-lg">
         <p className="text-zinc-200 text-2xl font-bold mb-4 text-center">Sign Up</p>
         <div className="space-y-4">

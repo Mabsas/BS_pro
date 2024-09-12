@@ -7,7 +7,7 @@ import AllBooks from './pages/AllBooks';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Profile from './pages/Profile';
-//import Cart from './pages/cart'; // Updated the import here
+import CartPage from './pages/CartPage';
 import ViewBookDetails from './components/ViewBookDetails/ViewBookDetails';
 import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from './store/auth';
@@ -17,7 +17,7 @@ import Settings from './components/Profile/Settings';
 import AllOrders from './pages/AllOrders';
 import AddBook from './pages/AddBook';
 import UpdateBook from './pages/UpdateBook';
-import CartPage from './pages/CartPage';
+
 
 
 const App = () => {
