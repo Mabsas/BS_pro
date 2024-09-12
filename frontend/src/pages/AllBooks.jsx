@@ -42,7 +42,7 @@ const AllBooks = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-600 to-zinc-800 p-6 md:p-12">
+    <div className="min-h-screen bg-gradient-to-br from-red-200 via-red-300 to-zinc-400 p-6 md:p-12">
       <h4 className="text-5xl font-bold text-yellow-100 text-center mb-10">All Books</h4>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {Data &&
