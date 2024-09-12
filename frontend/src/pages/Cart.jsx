@@ -38,25 +38,25 @@ const Cart = () => {
 
   const PlaceOrder = async () => {
     try {
-      const response = await axios.post(`http://localhost:1000/api/v1/place-order`,      {order: Cart},
-        {headers});
-        alert(response.data.message);
-        navigate("/profile/orderHistory");
+      const response = await axios.post(`http://localhost:1000/api/v1/place-order`, { order: Cart }, { headers });
+      alert(response.data.message);
+      navigate("/profile/orderHistory");
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
-    <div className="bg-gray-900 px-8 py-12 min-h-screen">
+    <div className="min-h-screen bg-gradient-to-b from-zinc-800 to-zinc-900 p-6 md:p-12 text-zinc-100">
       {!Cart && (
-        <div className="w-full h-[100%] flex items-center justify-center mt-72">
-          <Loader />{" "}
+        <div className="w-full h-screen flex items-center justify-center">
+          <Loader />
         </div>
       )}
 
       {Cart && Cart.length === 0 && (
         <div className="flex flex-col items-center justify-center h-full">
-          <h1 className="text-5xl lg:text-6xl font-bold text-gray-400 mt-48 mb-8">
+          <h1 className="text-5xl lg:text-6xl font-bold text-zinc-300 mt-48 mb-8">
             Your Cart is Empty
           </h1>
           <img
@@ -69,39 +69,40 @@ const Cart = () => {
 
       {Cart && Cart.length > 0 && (
         <>
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-300 mb-10 flex items-center justify-center">
+          <h1 className="text-4xl lg:text-5xl font-bold text-white mb-8 text-center">
             Your Cart
           </h1>
           <div className="overflow-x-auto mb-12">
-            <table className="min-w-full bg-gray-800 text-white">
+            <table className="min-w-full bg-zinc-800 rounded-lg shadow-lg text-white">
               <thead>
-                <tr className="text-left">
-                  <th className="py-3 px-4">Book</th>
-                  <th className="py-3 px-4">Description</th>
-                  <th className="py-3 px-4">Price</th>
-                  <th className="py-3 px-4">Action</th>
+                <tr className="text-left text-zinc-300 bg-zinc-900">
+                  <th className="py-4 px-6 font-semibold tracking-wide border-b border-zinc-700">Book</th>
+                  <th className="py-4 px-6 font-semibold tracking-wide border-b border-zinc-700">Description</th>
+                  <th className="py-4 px-6 font-semibold tracking-wide border-b border-zinc-700">Price</th>
+                  <th className="py-4 px-6 font-semibold tracking-wide border-b border-zinc-700">Action</th>
                 </tr>
               </thead>
               <tbody>
                 {Cart.map((items, i) => (
-                  <tr key={i} className="border-t border-gray-700">
-                    <td className="py-3 px-4">
+                  <tr
+                    key={i}
+                    className="border-b border-zinc-700 hover:bg-zinc-700 transition-colors duration-300"
+                  >
+                    <td className="py-4 px-6">
                       <img
                         src={items.url}
                         alt={items.title}
                         className="h-[10vh] object-cover rounded-lg"
                       />
                     </td>
-                    <td className="py-3 px-4">
+                    <td className="py-4 px-6">
                       <h2 className="text-xl font-semibold">{items.title}</h2>
-                      <p className="text-sm text-gray-400">
-                        {items.desc.slice(0, 100)}...
-                      </p>
+                      <p className="text-sm text-zinc-400">{items.desc.slice(0, 100)}...</p>
                     </td>
-                    <td className="py-3 px-4">Tk {items.price}</td>
-                    <td className="py-3 px-4">
+                    <td className="py-4 px-6 text-lg font-semibold">Tk {items.price}</td>
+                    <td className="py-4 px-6">
                       <button
-                        className="text-red-500 hover:text-red-700 transition-colors duration-200 p-2 rounded-full"
+                        className="text-red-500 hover:text-red-700 transition-transform transform hover:scale-110 p-2 rounded-full"
                         onClick={() => deleteItem(items._id)}
                       >
                         <AiFillDelete size={24} />
@@ -111,19 +112,23 @@ const Cart = () => {
                 ))}
               </tbody>
             </table>
+
           </div>
-          {/* Place Order Section in the Middle */}
+
           <div className="flex justify-center items-center">
-            <div className="bg-zinc-800 rounded-lg shadow-lg p-6 w-full max-w-md text-center">
+            <div className="bg-zinc-800 rounded-lg shadow-lg p-6 w-full max-w-md text-center border border-zinc-700">
               <h1 className="text-4xl text-white font-semibold mb-4">Place Your Order</h1>
-              <div className="bg-zinc-900 p-4 rounded-lg mb-6">
+              <div className="bg-zinc-900 p-4 rounded-lg mb-6 shadow-md">
                 <h2 className="text-xl text-zinc-200">Total Amount</h2>
                 <div className="mt-3 flex items-center justify-between text-xl text-zinc-200">
-                  <h2>{Cart.length}x...............books</h2>
+                  <h2>{Cart.length}x books</h2>
                   <h2>Tk {Total}</h2>
                 </div>
               </div>
-              <button className="bg-white hover:bg-green-600 text-black font-bold py-2 px-4 rounded-lg w-full text-lg transition duration-300" onClick={PlaceOrder}>
+              <button
+                className="bg-yellow-500 text-zinc-900 font-bold px-6 py-3 rounded-full hover:bg-green-400 transition-transform transform hover:scale-105 shadow-lg focus:ring-4 focus:ring-yellow-500"
+                onClick={PlaceOrder}
+              >
                 Place Order
               </button>
             </div>
