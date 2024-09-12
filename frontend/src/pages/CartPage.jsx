@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AiFillDelete } from "react-icons/ai";
 
-const Cart = () => {
+const CartPage = () => {
   const navigate = useNavigate();
   const [Cart, setCart] = useState();
   const [Total, setTotal] = useState(0);
@@ -139,4 +139,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default CartPage;
