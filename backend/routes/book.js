@@ -58,7 +58,7 @@ router.delete("/delete-book", authenticateToken, async (req, res) => {
 });
 
 //get all books
-router.get("/get-all-books", authenticateToken, async (req, res) => {
+router.get("/get-all-books",  async (req, res) => {
     try {
         const books = await Book.find().sort({ createdAt: -1 });
         return res.json({

@@ -80,7 +80,6 @@ const ViewBookDetails = () => {
                                     </button>
                                 </div>
                             )}
-
                         </div>
                     </div>
                     <div className="p-4 w-full lg:w-3/6">

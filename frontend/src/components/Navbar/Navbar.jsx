@@ -15,14 +15,14 @@ const Navbar = () => {
     const role = useSelector((state) => state.auth.role);
 
     if (isLoggedIn === false) {
-        links.splice(3, 3);  //cuts off cart profile & admin profile if not logged in
+        links.splice(2, 3);  //cuts off cart profile & admin profile if not logged in
     }
 
     if (isLoggedIn === true && role === "user") {
         links.splice(4, 1);  
     }
     if (isLoggedIn === true && role === "admin") {
-        links.splice(3, 1);  
+        links.splice(2, 2);  
     }
     const [MobileNav, setMobileNav] = useState("hidden");
 
