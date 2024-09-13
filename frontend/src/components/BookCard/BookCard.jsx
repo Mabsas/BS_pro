@@ -19,18 +19,18 @@ const BookCard = ({ data, favourite }) => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-gray-900 via-gray-700 to-gray-500 rounded-lg p-4 flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300 w-full max-w-sm mx-auto">
-      <Link to={`/view-book-details/${data._id}`}>
+    <div className="bg-gradient-to-b from-gray-900 via-gray-700 to-gray-500 rounded-lg p-4 flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300 w-full max-w-sm mx-auto h-[550px]">
+      <Link to={`/view-book-details/${data._id}`} className="flex-1">
         <div>
-          <div className="flex items-center justify-center h-[350px]">
+          <div className="flex items-center justify-center h-[300px]">
             <img
               src={data.url}
               alt={data.title}
-              className="h-full object-center rounded-lg w-full"
+              className="h-full object-cover rounded-lg w-full"
             />
           </div>
-          <h2 className="mt-4 text-xl text-black font-semibold">{data.title}</h2>
-          <p className="mt-2 text-zinc-300 font-medium">by {data.author}</p>
+          <h2 className="mt-4 text-xl text-black font-semibold line-clamp-1">{data.title}</h2>
+          <p className="mt-2 text-zinc-300 font-medium line-clamp-1">by {data.author}</p>
           <p className="mt-2 text-black font-semibold text-lg">Tk {data.price}</p>
         </div>
       </Link>
