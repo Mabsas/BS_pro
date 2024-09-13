@@ -19,7 +19,7 @@ const BookCard = ({ data, favourite }) => {
   };
 
   return (
-    <div className="bg-gradient-to-t from-gray-900 via-gray-700 to-gray-500 rounded-lg p-4 flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300 w-full max-w-sm mx-auto">
+    <div className="bg-gradient-to-b from-gray-900 via-gray-700 to-gray-500 rounded-lg p-4 flex flex-col shadow-lg hover:shadow-xl transition-shadow duration-300 w-full max-w-sm mx-auto">
       <Link to={`/view-book-details/${data._id}`}>
         <div>
           <div className="flex items-center justify-center h-[350px]">
