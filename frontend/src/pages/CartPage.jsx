@@ -47,9 +47,9 @@ const CartPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-zinc-800 to-zinc-900 p-6 md:p-12 text-zinc-100">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-gray-600 to-zinc-800 text-zinc-100">
       {!Cart && (
-        <div className="w-full h-screen flex items-center justify-center">
+        <div className="w-full h-screen flex items-center justify-center bg-gradient-to-b from-zinc-600 via-zinc-700 to-zinc-800">
           <Loader />
         </div>
       )}
