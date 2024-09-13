@@ -100,6 +100,33 @@ router.get("/get-book-by-id/:id", async (req, res) => {
         return res.status(500).json({ message: "An error occured!" });
     }
 });
+
+
+
+// NEW: Search Books by Title or Author
+// This is the new route for searching books by title (book name) or author (writer's name).
+router.get("/search-books", async (req, res) => {
+    try {
+        const { query } = req.query; // Get the search query from the request
+        
+        // Find books where the title or author contains the query string (case-insensitive)
+        const books = await Book.find({
+            $or: [
+                { title: { $regex: query, $options: 'i' } }, // Search by book title
+                { author: { $regex: query, $options: 'i' } } // Search by author's name
+            ]
+        });
+
+        return res.json({
+            status: "Success",
+            data: books,
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ message: "An error occurred!" });
+    }
+});
+
  
 
 

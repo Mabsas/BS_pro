@@ -17,6 +17,8 @@ import Settings from './components/Profile/Settings';
 import AllOrders from './pages/AllOrders';
 import AddBook from './pages/AddBook';
 import UpdateBook from './pages/UpdateBook';
+import SearchResults from './pages/SearchResults';
+
 
 
 
@@ -60,6 +62,7 @@ const App = () => {
         <Route path="/Login" element={<Login />} />
         <Route path="/updateBook/:id" element={<UpdateBook />} />
         <Route path="/view-book-details/:id" element={<ViewBookDetails />} />
+        <Route path="/search-results" element={<SearchResults />} /> 
       </Routes>
       <Footer />
     </div>
