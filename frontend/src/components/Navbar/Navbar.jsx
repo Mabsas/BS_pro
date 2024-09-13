@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaGripLines } from "react-icons/fa";
 import { useSelector } from 'react-redux';
@@ -32,6 +32,14 @@ const Navbar = () => {
     const [suggestions, setSuggestions] = useState([]);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        // Clear suggestions on unmount
+        return () => {
+            setSuggestions([]);
+            setQuery('');
+        };
+    }, []);
 
     // Fetch suggestions as the user types
     const handleSearchChange = async (e) => {
@@ -74,7 +82,6 @@ const Navbar = () => {
                 </Link>
 
                 {/* Search bar */}
-
                 { role !== "admin" && (
                     <div className="relative mx-auto w-full max-w-lg md:max-w-2xl lg:max-w-3xl">
                         <div className="relative">
@@ -105,7 +112,6 @@ const Navbar = () => {
                         )}
                     </div>
                 )}
-
 
                 <div className="nav-links-bookshelf block md:flex items-center gap-4">
                     <div className="hidden md:flex gap-4">
