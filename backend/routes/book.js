@@ -127,6 +127,22 @@ router.get("/search-books", async (req, res) => {
     }
 });
 
+
+// Get book prices and titles
+router.get("/get-book-prices", async (req, res) => {
+    try {
+        const books = await Book.find({}, { title: 1, price: 1 }); // Select only titles and prices
+        return res.json({
+            status: "Success",
+            data: books,
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ message: "An error occurred!" });
+    }
+});
+
+
  
 
 

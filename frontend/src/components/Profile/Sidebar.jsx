@@ -36,11 +36,15 @@ const Sidebar = ({ data }) => {
                         to="/profile/settings" className="text-zinc-100 font-semibold w-full py-2 text-center hover:bg-zinc-900 rounded transition-all duration-300">
                         Settings
                     </Link>
+                    <Link
+                        to="/profile/chart" className="text-zinc-100 font-semibold w-full py-2 text-center hover:bg-zinc-900 rounded transition-all duration-300">
+                        PriceChart
+                    </Link>
                 </div>
             )}
 
             {role === "admin" && (
-                <div className="w-full flex flex-col items-center justify-center gap-3 lg:gap-4 hidden lg:flex">
+                <div className="w-full flex flex-col items-center justify-center gap-3 lg:gap-4  lg:flex">
                     <Link
                         to="/profile" className="text-zinc-100 font-semibold w-full py-2 text-center hover:bg-zinc-900 rounded transition-all duration-300">
                         All Orders
@@ -48,6 +52,10 @@ const Sidebar = ({ data }) => {
                     <Link
                         to="/profile/add-book" className="text-zinc-100 font-semibold w-full py-2 text-center hover:bg-zinc-900 rounded transition-all duration-300">
                        Add Book
+                    </Link>
+                    <Link
+                        to="/profile/chart" className="text-zinc-100 font-semibold w-full py-2 text-center hover:bg-zinc-900 rounded transition-all duration-300">
+                        PriceChart
                     </Link>
                 </div>
             )}

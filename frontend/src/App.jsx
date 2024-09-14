@@ -18,6 +18,7 @@ import AllOrders from './pages/AllOrders';
 import AddBook from './pages/AddBook';
 import UpdateBook from './pages/UpdateBook';
 import SearchResults from './pages/SearchResults';
+import PriceChart from './pages/PriceChart';
 
 
 
@@ -57,12 +58,14 @@ const App = () => {
           )}
           <Route path="/profile/orderHistory" element={<UserOrderHistory />} />
           <Route path="/profile/settings" element={<Settings />} />
+          <Route path="/profile/chart" element={<PriceChart />} /> 
         </Route>
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/updateBook/:id" element={<UpdateBook />} />
         <Route path="/view-book-details/:id" element={<ViewBookDetails />} />
-        <Route path="/search-results" element={<SearchResults />} /> 
+        <Route path="/search-results" element={<SearchResults />} />
+
       </Routes>
       <Footer />
     </div>
