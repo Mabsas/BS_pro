@@ -10,7 +10,7 @@ const Sidebar = ({ data }) => {
     const history = useNavigate();
     const role = useSelector((state) => state.auth.role);
     return (
-        <div className="bg-gradient-to-b from-zinc-600 via-zinc-700 to-zinc-800 p-4 rounded flex flex-col items-center justify-between h-auto lg:h-[100vh] w-full lg:w-[250px]">
+        <div className="bg-gradient-to-t from-zinc-600 via-zinc-700 to-zinc-800 p-4 rounded flex flex-col items-center justify-between h-auto lg:h-[100vh] w-full lg:w-[250px]">
             {/* User Profile Section */}
             <div className="flex items-center flex-col justify-center mb-4 lg:mb-0">
                 <img src={data.avatar} className="h-[12vh] w-[12vh] rounded-full object-cover" alt="Profile Avatar" />
