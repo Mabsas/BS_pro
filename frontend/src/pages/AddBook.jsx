@@ -54,9 +54,9 @@ const AddBook = () => {
     };
 
     return (
-        <div className="min-h-screen bg-zinc-900 flex flex-col lg:flex-row">
+        <div className="min-h-screen bg-zinc-900 flex">
             {/* Sidebar */}
-            <div className="lg:w-1/4 w-full">
+            <div className="lg:w-1/4 w-full flex-shrink-0">
                 <Sidebar data={{ avatar: "path/to/avatar", username: "Admin", email: "admin@example.com" }} />
             </div>
 
