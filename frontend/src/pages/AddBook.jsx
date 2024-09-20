@@ -57,7 +57,7 @@ const AddBook = () => {
             <h1 className="text-5xl font-semibold text-zinc-400 mb-8">
                 Add Book
             </h1>
-            <div className="p-4 bg-zinc-800 rounded">
+            <div className="p-4 bg-gradient-to-b from-zinc-600 via-zinc-700 to-zinc-800 rounded">
                 {/* Image URL */}
                 <div>
                     <label htmlFor="url" className="text-zinc-400 block mb-2">
