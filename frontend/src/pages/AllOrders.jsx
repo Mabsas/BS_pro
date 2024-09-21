@@ -82,7 +82,7 @@ const AllOrders = () => {
             </div>
           </div>
           {AllOrders && AllOrders.map((items, i) => (
-            <div className="border-b border-zinc-800 bg-zinc-700 hover:bg-zinc-600 transition-colors duration-300 w-full rounded py-2 px-4 flex gap-2">
+            <div className="border-b border-zinc-800 bg-zinc-800 hover:bg-zinc-700 transition-colors duration-300 w-full rounded py-2 px-4 flex gap-2">
               <div className="w-[3%]">
                 <h1 className="text-center">
                   {i + 1}
@@ -93,9 +93,7 @@ const AllOrders = () => {
                   to={`/view-book-details/${items.book._id}`}
                   className="hover:text-blue-300"
                 >
-                  {items.book.title.length>50
-                   ? `${items.book.title.slice(0,30)}...`
-                   : items.book.title}
+                 <h1 className="">{items.book.title.slice(0, 30)} ....</h1>
                 </Link>
               </div>
               <div className="w-0 md:w-[45%] hidden md:block">
