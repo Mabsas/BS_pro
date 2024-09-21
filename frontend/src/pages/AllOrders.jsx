@@ -82,7 +82,7 @@ const AllOrders = () => {
             </div>
           </div>
           {AllOrders && AllOrders.map((items, i) => (
-            <div className="border-b border-zinc-700 hover:bg-zinc-700 transition-colors duration-300 w-full rounded py-2 px-4 flex gap-2">
+            <div className="border-b border-zinc-800 bg-zinc-700 hover:bg-zinc-600 transition-colors duration-300 w-full rounded py-2 px-4 flex gap-2">
               <div className="w-[3%]">
                 <h1 className="text-center">
                   {i + 1}
@@ -94,7 +94,7 @@ const AllOrders = () => {
                   className="hover:text-blue-300"
                 >
                   {items.book.title.length>50
-                   ? `${items.book.title.slice(0,50)}...`
+                   ? `${items.book.title.slice(0,30)}...`
                    : items.book.title}
                 </Link>
               </div>
