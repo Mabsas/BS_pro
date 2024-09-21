@@ -66,37 +66,49 @@ const UserOrderHistory = () => {
             >
               <div className="w-[5%] text-center">{i + 1}</div>
               <div className="w-[22%] text-left">
-                <Link
-                  to={`/view-book-details/${item.book._id}`}
-                  className="text-blue-300 hover:underline"
-                >
-                  {item.book.title}
-                </Link>
+                {item.book ? (
+                  <Link
+                    to={`/view-book-details/${item.book._id}`}
+                    className="text-blue-300 hover:underline"
+                  >
+                    {item.book.title}
+                  </Link>
+                ) : (
+                  <span className="text-red-500">Book Unavailable</span>
+                )}
               </div>
               <div className="w-[35%] text-left text-zinc-400">
-                {item.book.desc.slice(0, 50)}...
+                {item.book ? item.book.desc.slice(0, 50) : 'Description Unavailable'}...
               </div>
               <div className="w-[8%] text-center text-zinc-400">
-                Tk {item.book.price}
+                {item.book ? `Tk ${item.book.price}` : 'N/A'}
               </div>
               <div className="w-[15%] text-center">
                 <span
                   className={
-                    item.status === 'Order Placed'
-                      ? 'text-green-500 font-semibold'
-                      : item.status === 'Canceled'
-                      ? 'text-red-500 font-semibold'
-                      : 'text-yellow-500 font-semibold'
+                    item.book
+                      ? item.status === 'Order Placed'
+                        ? 'text-green-500 font-semibold'
+                        : item.status === 'Canceled'
+                          ? 'text-red-950 font-semibold'
+                          : item.status === 'Out of Stock'
+                            ? 'text-red-500 font-semibold'  // This will make 'Out of Stock' red
+                            : 'text-yellow-500 font-semibold'
+                      : 'text-red-500 font-semibold'
                   }
                 >
-                  {item.status}
+                  {item.book ? item.status : 'Out of Stock'}
                 </span>
               </div>
+
               <div className="w-[5%] text-center hidden md:block">
-                <h1 className="text-sm text-zinc-400">COD</h1>
+                <h1 className="text-sm text-zinc-400">
+                  {item.book ? 'COD' : 'Null'}
+                </h1>
               </div>
             </div>
           ))}
+
         </div>
       )}
     </>
