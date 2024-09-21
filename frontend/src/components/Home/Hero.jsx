@@ -80,7 +80,7 @@ const Hero = () => {
             </div>
 
             {/* Content of the Hero section */}
-            <div className="h-[80vh] flex flex-col md:flex-row items-center justify-center">
+            <div className="h-[80vh] flex flex-col md:flex-row items-center justify-center mt-3">
                 <div className="w-full mb-12 md:mb-0 lg:w-3/6 flex flex-col items-center lg:items-start justify-center ">
                     <h1 className="text-4xl font-semibold text-yellow-100 text-center lg:text-left">
                         Explore Your Next Great Read
