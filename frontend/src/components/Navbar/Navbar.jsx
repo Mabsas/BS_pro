@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaGripLines } from "react-icons/fa";
 import { useSelector } from 'react-redux';
-import axios from 'axios';
-import { ImSearch } from "react-icons/im";
 
 const Navbar = () => {
     const links = [
@@ -28,46 +26,7 @@ const Navbar = () => {
     }
 
     const [MobileNav, setMobileNav] = useState("hidden");
-    const [query, setQuery] = useState('');
-    const [suggestions, setSuggestions] = useState([]);
-    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        // Clear suggestions on unmount
-        return () => {
-            setSuggestions([]);
-            setQuery('');
-        };
-    }, []);
-
-    // Fetch suggestions as the user types
-    const handleSearchChange = async (e) => {
-        const searchText = e.target.value;
-        setQuery(searchText);
-        if (searchText.length > 1) { // Fetch suggestions after 2 characters
-            setLoading(true);
-            try {
-                const response = await axios.get(`https://bs-pro-api.vercel.app/api/v1/search-books`, {
-                    params: { query: searchText }
-                });
-                setSuggestions(response.data.data);
-            } catch (error) {
-                console.error('Error fetching suggestions:', error);
-            } finally {
-                setLoading(false);
-            }
-        } else {
-            setSuggestions([]);
-        }
-    };
-
-    // Navigate to the results page when a suggestion is clicked
-    const handleSuggestionClick = (suggestion) => {
-        navigate(`/search-results?query=${suggestion}`);
-        setQuery(''); // Clear search input after navigating
-        setSuggestions([]);
-    };
 
     return (
         <>
@@ -80,38 +39,6 @@ const Navbar = () => {
                     />
                     <h1 className="text-2xl font-semibold">BoOkshelf</h1>
                 </Link>
-
-                {/* Search bar */}
-                { role !== "admin" && (
-                    <div className="relative mx-auto w-full max-w-lg md:max-w-2xl lg:max-w-3xl">
-                        <div className="relative">
-                            <input
-                                type="text"
-                                value={query}
-                                onChange={handleSearchChange}
-                                placeholder="Search by book or author"
-                                className="w-full p-3 pl-12 pr-12 rounded-full border border-gray-600 bg-gradient-to-l from-zinc-800 via-zinc-400 to-zinc-800 text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 ease-in-out"
-                            />
-                            <ImSearch className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white" />
-                        </div>
-
-                        {loading && <div className="text-yellow-100 mt-1">Searching...</div>}
-
-                        {suggestions.length > 0 && (
-                            <ul className="absolute z-50 bg-zinc-800 border border-gray-600 w-full mt-1 rounded-lg max-h-60 overflow-y-auto shadow-lg transition-all duration-300 ease-in-out">
-                                {suggestions.map((item, index) => (
-                                    <li
-                                        key={index}
-                                        onClick={() => handleSuggestionClick(item.title)}
-                                        className="p-2 cursor-pointer hover:bg-zinc-600 text-white transition-colors duration-200 ease-in-out"
-                                    >
-                                        {item.title} by {item.author}
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-                    </div>
-                )}
 
                 <div className="nav-links-bookshelf block md:flex items-center gap-4">
                     <div className="hidden md:flex gap-4">
